@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kayalvizhi Portfolio</title>
+  <link rel="icon" type="image/png" href="image/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding:0;
+      font-family: 'Lobster', cursive;
+      background: #f4f0ec;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    /* ===== Navbar ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #5a2a2a;
+      color: #fff;
+      display: flex;
+      justify-content:space-around;
+      align-items: center;
+      padding: 25px;
+      z-index: 1000;
+    }
+    nav h2 {
+      font-family: 'Lobster', cursive;
+      margin: 0;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ffcccb;
+    }
+
+    /* ===== Sections ===== */
+    section {
+      min-height: 100vh;
+      padding: 50px 0 0px 2%;
+      display: flex;
+      align-items:flex-end;
+      justify-content: space-between;
+    }
+    .section-1{
+      min-height: 100vh;
+      padding: 50px 0 0px 2%;
+      display: flex;
+      align-items:center;
+      justify-content: space-evenly;
+    }
+    
+    h1 {
+      font-family: 'Lobster', cursive;
+      font-size: 60px;
+      color: #4b2e2e;
+    }
+    h2 {
+      font-size: 32px;
+      color: #4b2e2e;
+    }
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .btn {
+      padding: 12px 30px;
+      background: #5a2a2a;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #8c4444;
+    }
+    
+    /* PNG images only */
+    img[src$=".png"] {
+      height: 90vh;
+      object-fit: contain;
+      margin-top: 20px;
+      display: block;
+      margin-right: 0;
+      margin-bottom: 0px;
+      align-items: flex-end;
+    }
+    
+    .content {
+      flex: 2;
+      padding: 20px;
+    }
+
+    /* Section backgrounds */
+    #home { background: #f4f0ec; }
+    #about { background: #ffffff; }
+    #projects { background: #f9f4f2; }
+    #certifications, #new-certifications { background: #ffffff; }
+    #whatido { background: #ffffff; }
+    #contact { background: #f9f4f2; text-align: center; }
+
+    /* ===== Projects Section ===== */
+    #projects h2 {
+      font-size: 36px;
+      color: #4b2e2e;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .projects-container {
+      display: flex;
+      justify-content:space-around;
+      align-items: flex-start;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: auto;
+      width: 90%;
+    }
+
+    .project-box {
+      width: 30%;
+      text-align: center;
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .project-box img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-box img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    .project-box p {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #5a2a2a;
+    }
+
+    .project-box .desc {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.4;
+      font-weight: normal;
+    }
+
+    /* ===== Skills Section ===== */
+    .skills-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 90%;
+      margin: auto;
+      gap: 40px;
+    }
+    .skills-container .left {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+    }
+    .skills-container .right {
+      flex: 2;
+      min-width: 300px;
+    }
+    .skill-box {
+      margin-bottom: 20px;
+    }
+    .skill-bar {
+      width: 100%;
+      background: #e0e0e0;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+    .skill-level {
+      height: 25px;
+      border-radius: 10px;
+      text-align: right;
+      color: #fff;
+      padding-right: 10px;
+      line-height: 25px;
+      background: #fffdfd;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .project-box {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-box {
+        width: 100%;
+      }
+      .skills-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .skills-container .left, .skills-container .right {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>PORTFOLIO</h2>
+    <ul>
+      <li><a href="#home"><h3>Home</h3></a></li>
+      <li><a href="#about"><h3>About</h3></a></li>
+      <li><a href="#contact"><h3>Contact</h3></a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <div class="content">
+      <h1>KAYALVIZHI RAMESH</h1>
+      <p><i>Graduated in B.Tech (AI & DS)</i></p>
+      <p>AI & Data Science enthusiast, passionate about turning data into insights.</p>
+      <p>
+        Programming / Problem Solving <br>
+        AI & Data Science / Machine Learning <br>
+        Web Development / Technical Presentations
+      </p><br>
+      <a href="file:///C:/Users/NEW/Desktop/important%20projects/KAYALVIZHI%20R%202025.pdf" class="btn">Resume</a>
+      <a href="#projects" class="btn">Projects</a><br><br><br><br><br><br>
+    </div>
+    <div class="img-box">
+      <img src="image/profile1.png" alt="Profile">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="content">
+      <h2>About Me</h2>
+      <p>
+        I am Kayalvizhi R, a dedicated professional with expertise in Artificial Intelligence and Data Science.
+        Skilled in Java, Python, and analytical problem-solving, I focus on creating efficient, reliable,
+        and impactful solutions through technology. <br><br>
+        My experience spans across internships, workshops, and technical presentations, which have strengthened
+        both my technical and communication skills. Passionate about AI, data security, and emerging technologies,
+        I aim to transform complex challenges into innovative opportunities.
+      </p><br><br><br><br><br><br>
+    </div>
+    <div class="img-box">
+      <img src="image/profile2.png" alt="About Me">
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" style="display:block; text-align:center; padding:50px 0;">
+     <h2 style="margin-bottom:40px;">Projects</h2>
+    <div class="projects-container">
+      <div class="project-box">
+        <a href="file:///C:/Users/NEW/Desktop/CLG%20Projects/projects/calci.html">
+        <img src="image/calci.jpg" alt="Smart calci">
+        </a>
+        <p>Smart Calculator - Micro Project</p>
+        <p class="desc">"A voice-enabled calculator that converts spoken numbers into input and performs calculations.".</p>
+      </div>
+      <div class="project-box">
+        <a href="file:///C:/xampp/htdocs/Malicious_URL_Detection/Malicious_URL_Detection/malicious_url_detection/Template/htmls/RUser/index.html">
+        <img src="image/malware.jpg" alt="Malware Detection"></a>
+        <p>Malware Detection using ML - Mini Project</p>
+        <p class="desc">"A machine learning solution for detecting and preventing malware attacks effectively".</p>
+      </div>
+      <div class="project-box">
+        <a href="file:///C:/Users/NEW/Desktop/CLG%20Projects/projects/FOOD%20RESCUE%20NETWORK/FOOD%20RESCUE%20NETWORK/FoodYard-main/index.html#">
+          <img src="image/foodrescue.jpg" alt="Food Rescue Network">
+        </a>
+        <p>Food Rescue Network</p>
+        <p class="desc">"A platform that connects surplus food donors with those in need to reduce food waste.".</p>
+      </div>
+      <div class="project-box">
+        <img src="image/heritage.jpg" alt="Heritage Explorer">
+        <p>Heritage Explorer</p>
+        <p class="desc">"A website that allows users to discover and explore historical sites and cultural heritage."</p>
+      </div>
+    </div>
+  </section><br><br><br>
+
+  <!-- New Certifications Section -->
+  <section id="new-certifications" style="display:block; text-align:center; padding:50px 0; background:#ffffff;">
+    <h2 style="margin-bottom:40px;">Certifications</h2>
+    <div class="projects-container">
+      <div class="project-box">
+        <a href="image/techvoltint.jpeg"><img src="image/techvoltint.jpeg" alt="Certification 1"></a>
+        <p>Internship - Python for Data Science</p>
+        <p class="desc">Use Python to clean, analyze, and visualize data, build predictive models, and support data-driven decision-making.</p>
+      </div>
+      <div class="project-box">
+        <a href="image/Guvi.jpeg"><img src="image/Guvi.jpeg" alt="Certification 2"></a>
+        <p>Certification - Gen-AI</p>
+        <p class="desc">Gained hands-on knowledge of generative AI concepts, tools, and applications for intelligent solutions.</p>
+      </div>
+      <div class="project-box">
+        <a href="image/techquiz.jpeg"><img src="image/techquiz.jpeg" alt="Certification 3"></a>
+        <p>Achievement - Technical Quize</p>
+        <p class="desc">Secured 2nd prize in a technical quiz by demonstrating strong knowledge in IT and programming concepts.</p>
+      </div>
+      <div class="project-box">
+        <a href="image/Codeheist.jpeg"><img src="image/Codeheist.jpeg" alt="Certification 4"></a>
+        <p>Achievement - Code Heist</p>
+        <p class="desc">Successfully participated in Code Heist challenge, solving coding problems under time constraints.</p>
+      </div>
+      <div class="project-box">
+        <a href="image/gnanppt.jpeg"><img src="image/gnanppt.jpeg" alt="Certification 5"></a>
+        <p>Paper Presentation - Image processing</p>
+        <p class="desc">Presented a research paper on image processing techniques, highlighting methods for enhancing and analyzing images.</p>
+      </div>
+      <div class="project-box">
+        <a href="image/konguppt.jpeg"><img src="image/konguppt.jpeg" alt="Certification 6"></a>
+        <p>Paper Presentation - Hypothyroid Prediction using Machine Learning</p>
+        <p class="desc">Prepared and presented a project on predicting hypothyroid conditions using machine learning techniques.</p>
+      </div>
+      <div class="project-box">
+        <a href=""><img src="image/mit.jpeg" alt="Certification 6"></a>
+        <p>Workshop on Metaverse, MIT</p>
+        <p class="desc"> Completed a hands-on session on Metaverse technologies and certified.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" style="display:block; background:#f4f0ec; text-align:center; padding:50px 0 0;">
+    <h2 style="margin-bottom:40px;">Skills</h2>
+    <div class="skills-container">
+      <!-- Left: Profile Image -->
+      <div class="left">
+        <img src="image/profile3.png" alt="Profile">
+      </div>
+      <!-- Right: Skills -->
+      <div class="right">
+        <div class="skill-box">
+          <p>HTML</p>
+          <div class="skill-bar"><div class="skill-level" style="width:80%;"><img src="image/htmllogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+        <div class="skill-box">
+          <p>CSS</p>
+          <div class="skill-bar"><div class="skill-level" style="width:80%;"><img src="image/csslogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+        <div class="skill-box">
+          <p>Python</p>
+          <div class="skill-bar"><div class="skill-level" style="width:50%;"><img src="image/pylogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+        <div class="skill-box">
+          <p>Java</p>
+          <div class="skill-bar"><div class="skill-level" style="width:50%;"><img src="image/javalogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+        <div class="skill-box">
+          <p>SQL</p>
+          <div class="skill-bar"><div class="skill-level" style="width:45%;"><img src="image/sqllogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+        <div class="skill-box">
+          <p>Communication</p>
+          <div class="skill-bar"><div class="skill-level" style="width:70%;"><img src="image/comlogo.jpg" alt="Smart calci" height="25px" width="20px"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- What I Do Section -->
+  <section id="whatido">
+    <div class="content">
+      <h2>What I Do</h2>
+      <p><b>AI & DS:</b> Explore machine learning techniques to turn data into meaningful insights.</p>
+      <p><b>Programming & Development:</b> Build reliable applications using Java, Python, and web technologies.</p>
+      <p><b>Presentations & Technical Writing:</b> Create impactful presentations and reports to communicate complex ideas.</p><br><br><br><br><br><br><br><br>
+    </div>
+    <div class="img-box">
+      <img src="image/profile4.png" alt="What I Do">
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" style="display:block; text-align:center; padding:50px 0 0;">
+    <br><br><br><br><br><br><br><h2 style="margin-bottom:40px;">Get In Touch</h2><br><br><br>
+    <div style="display:flex; justify-content:space-around; flex-wrap:wrap; max-width:900px; margin:auto; margin-top:30px;">
+      <div style="flex:1; min-width:200px; display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+        <a href="https://www.linkedin.com/in/kayalvizhir2004"><img src="image/linkedin.png" alt="LinkedIn" style="width:150px; height:150px; margin-bottom:10px;"></a>
+        <a href="https://www.linkedin.com/in/kayalvizhir2004" target="_blank" style="text-decoration:none; color:#4b2e2e; font-weight:bold;">LinkedIn</a>
+      </div>
+      <div style="flex:1; min-width:200px; display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+        <a href="https://github.com/Kayalvizhi-git"><img src="image/github.png" alt="GitHub" style="width:150px; height:150px; margin-bottom:10px;"></a>
+        <a href="https://github.com/Kayalvizhi-git" target="_blank" style="text-decoration:none; color:#4b2e2e; font-weight:bold;">GitHub</a>
+      </div>
+      <div style="flex:1; min-width:200px; display:flex; flex-direction:column; align-items:center; margin-bottom:20px;">
+        <a href="mailto:kayalvizhi2004@gmail.com"><img src="image/email.png" alt="Email" style="width:150px; height:150px; margin-bottom:10px;"></a>
+        <a href="mailto:kayalvizhi2004@gmail.com" style="text-decoration:none; color:#4b2e2e; font-weight:bold;">Email</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
